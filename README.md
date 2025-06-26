@@ -2,12 +2,24 @@
 
 **Jsonite Daemon** is a lightweight D-Bus service built with GDBus and JSON-GLib. It provides a modular interface for UI-driven configuration and control of widget-based components using a structured JSON payload format.
 
-The daemon provides two examples, calculator & [Konfabulator Widget](https://json.org/example.html#:~:text=%3Cwidget%3E-,%3Cdebug%3Eon%3C/debug%3E,-%3Cwindow%20title%3D%22Sample), please use `gdbus introspect` to check the methods and properties offered by the daemon.
+- The daemon provides two examples, calculator & [Konfabulator Widget](https://json.org/example.html#:~:text=%3Cwidget%3E-,%3Cdebug%3Eon%3C/debug%3E,-%3Cwindow%20title%3D%22Sample), please use `gdbus introspect` to check the methods and properties offered by the daemon.
+- _Currently the repository does not come with a UI application that interacts with daemon, `gdbus call` is used to test methods & properties_
+- _Sqlite database will be used in future to improve persistence_
 
-_Currently the repository does not come with a UI application that interacts with daemon, `gdbus call` is used to test methods & properties_
-
-_Sqlite database will be used in future to improve persistence_
-
+```bash
++----------------------+        D-Bus       +-----------------------+
+|                      | <----------------> |                       |
+|   UI Application     |                    |    jsonite-daemon     |
+|                      |                    |  (GDBus + JSON-GLib)  |
+|                      | -----------------> |                       |
++----------------------+  signals & calls   +-----------------------+
+													   |   ^
+													   v   |
+												+-----------------+
+												| Persistence DB  |
+												|  (e.g. SQLite)  |
+												+-----------------+
+```
 ### Features
 
 - **Modular D-Bus Interfaces**: Designed using introspection XML and `gdbus-codegen`.
