@@ -1,0 +1,30 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+  "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="com.jsoniteDaemon.Calculator">
+    <!-- Add two numbers, encoded as JSON -->
+    <method name="Add">
+      <arg name="json_request" type="s" direction="in"/>
+      <arg name="json_response"   type="s" direction="out"/>
+    </method>
+
+    <!-- Subtract two numbers, encoded as JSON -->
+    <method name="Subtract">
+      <arg name="json_request" type="s" direction="in"/>
+      <arg name="json_response"   type="s" direction="out"/>
+    </method>
+
+    <!-- Multiply two numbers, encoded as JSON -->
+    <method name="Multiply">
+      <arg name="json_request" type="s" direction="in"/>
+      <arg name="json_response"   type="s" direction="out"/>
+    </method>
+
+    <!-- Divide two numbers, encoded as JSON -->
+    <method name="Divide">
+      <arg name="json_request" type="s" direction="in"/>
+      <arg name="json_response"   type="s" direction="out"/>
+    </method>
+  </interface>
+</node>
+

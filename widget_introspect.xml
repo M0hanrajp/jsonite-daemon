@@ -1,0 +1,82 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+    <!-- Interface to manage a Konfabulator-style widget -->
+    <interface name="com.jsoniteDaemon.Konfabulator.Widget">
+        <!-- Debug property -->
+        <property name="Debug" type="s" access="readwrite"/>
+
+        <!-- Window creation method -->
+        <method name="CreateWindow">
+            <arg name="title" type="s" direction="in"/>
+            <arg name="name"  type="s" direction="in"/>
+            <arg name="width" type="u" direction="in"/>
+            <arg name="height" type="u" direction="in"/>
+        </method>
+        <!-- Window properties -->
+        <property name="WindowName"  type="s" access="readwrite"/>
+        <property name="WindowTitle" type="s" access="readwrite"/>
+        <property name="WindowWidth" type="u" access="readwrite"/>
+        <property name="WindowHeight" type="u" access="readwrite"/>
+
+        <!-- Image creation method -->
+        <method name="CreateImage">
+            <arg name="src"       type="s" direction="in"/>
+            <arg name="name"      type="s" direction="in"/>
+            <arg name="hOffset"   type="i" direction="in"/>
+            <arg name="vOffset"   type="i" direction="in"/>
+            <arg name="alignment" type="s" direction="in"/>
+        </method>
+        <!-- Image properties -->
+        <property name="ImageSrc"       type="s" access="readwrite"/>
+        <property name="ImageName"      type="s" access="readwrite"/>
+        <property name="ImageHOffset"   type="i" access="readwrite"/>
+        <property name="ImageVOffset"   type="i" access="readwrite"/>
+        <property name="ImageAlignment" type="s" access="readwrite"/>
+
+        <!-- Text creation method -->
+        <method name="CreateText">
+            <arg name="data"      type="s" direction="in"/>
+            <arg name="size"      type="u" direction="in"/>
+            <arg name="style"     type="s" direction="in"/>
+            <arg name="name"      type="s" direction="in"/>
+            <arg name="hOffset"   type="i" direction="in"/>
+            <arg name="vOffset"   type="i" direction="in"/>
+            <arg name="alignment" type="s" direction="in"/>
+        </method>
+        <!-- Text properties -->
+        <property name="TextData"      type="s" access="readwrite"/>
+        <property name="TextSize"      type="u" access="readwrite"/>
+        <property name="TextStyle"     type="s" access="readwrite"/>
+        <property name="TextName"      type="s" access="readwrite"/>
+        <property name="TextHOffset"   type="i" access="readwrite"/>
+        <property name="TextVOffset"   type="i" access="readwrite"/>
+        <property name="TextAlignment" type="s" access="readwrite"/>
+
+        <!-- Show all settings as JSON -->
+        <method name="ShowAllSettings">
+            <arg name="jsonConfig" type="s" direction="out"/>
+        </method>
+
+
+        <!-- Mouse-up signal for text widgets 
+        <signal name="TextMouseUp">
+          <arg name="textName" type="s"/>
+        </signal> -->
+
+        <!-- Assign onMouseUp script 
+        <method name="SetOnMouseUp">
+          <arg name="textName" type="s" direction="in"/>
+          <arg name="script"   type="s" direction="in"/>
+        </method> -->
+
+        <!-- Standard PropertiesChanged signal
+             This sends back the signal to UI, UI updates it's layout and is notified
+        <signal name="PropertiesChanged">
+          <arg name="interface" type="s"/>
+          <arg name="changed_properties" type="a{sv}"/>
+          <arg name="invalidated_properties" type="as"/>
+        </signal> -->
+    </interface>
+</node>
+
